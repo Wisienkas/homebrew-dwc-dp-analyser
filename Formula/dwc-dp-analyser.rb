@@ -2,7 +2,7 @@ class DwcDpAnalyser < Formula
   desc "Validator/analyser CLI for DwC-DP data packages"
   homepage "https://github.com/gbif/dwc-dp-analyser"
   url "https://github.com/gbif/dwc-dp-analyser/releases/download/dwc-dp-analyser-0.0.8/dwc-dp-analyser-0.0.8.jar"
-  sha256 "912eac45f52aae8f5fde458d57d34288c3cd157a0320f60138b7fce00dbae160"
+  sha256 "22558897b98f13346aad9bfaa5c959c9da4abf0c5d3269918d368f23cdd2e7bc"
   license "Apache-2.0"
 
   # Adjust the openjdk version constraint here if the CLI needs a specific

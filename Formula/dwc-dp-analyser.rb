@@ -13,7 +13,7 @@ class DwcDpAnalyser < Formula
     libexec.install "dwc-dp-analyser-0.0.8.jar" => "dwc-dp-analyser-cli.jar"
     (bin/"dwc-dp-analyser").write <<~SCRIPT
       #!/bin/bash
-      exec "#{Formula["openjdk"].opt_bin}/java" --enable-native-access=ALL-UNNAMED -jar "#{libexec}/dwc-dp-analyser-cli.jar" "$@"
+      exec "#{formula_opt_bin("openjdk")}/java" --enable-native-access=ALL-UNNAMED -jar "#{libexec}/dwc-dp-analyser-cli.jar" "$@"
     SCRIPT
 
     # picocli ships a completion generator (AutoComplete) baked into the
@@ -22,7 +22,7 @@ class DwcDpAnalyser < Formula
     # installed. picocli only emits a bash-style script, so zsh gets a
     # small wrapper that loads bashcompinit and sources it, rather than a
     # native #compdef function.
-    system Formula["openjdk"].opt_bin/"java", "-cp", libexec/"dwc-dp-analyser-cli.jar",
+    system formula_opt_bin("openjdk")/"java", "-cp", libexec/"dwc-dp-analyser-cli.jar",
            "picocli.AutoComplete", "--force", "-n", "dwc-dp-analyser",
            "-o", "dwc-dp-analyser_completion", "org.gbif.dp.cli.Config"
     bash_completion.install "dwc-dp-analyser_completion" => "dwc-dp-analyser"

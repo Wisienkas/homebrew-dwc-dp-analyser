@@ -2,7 +2,7 @@ class DwcDpAnalyser < Formula
   desc "Validator/analyser CLI for DwC-DP data packages"
   homepage "https://github.com/gbif/dwc-dp-analyser"
   url "https://github.com/gbif/dwc-dp-analyser/releases/download/dwc-dp-analyser-0.0.8/dwc-dp-analyser-0.0.8.jar"
-  sha256 "22558897b98f13346aad9bfaa5c959c9da4abf0c5d3269918d368f23cdd2e7bc"
+  sha256 "28f721dc376d36f9078fe674c264212dd6c90ac62928df6a10c10892a9d327ce"
   license "Apache-2.0"
 
   # Adjust the openjdk version constraint here if the CLI needs a specific
@@ -30,6 +30,10 @@ class DwcDpAnalyser < Formula
     (zsh_completion/"_dwc-dp-analyser").write <<~ZSH
       #compdef dwc-dp-analyser
       autoload -U +X bashcompinit && bashcompinit
+      # picocli's generated completion script calls compopt, a bash 4+
+      # builtin with no equivalent in bashcompinit's zsh emulation — stub
+      # it as a no-op so it doesn't spam "command not found" on every tab.
+      compopt() { :; }
       source "#{bash_completion}/dwc-dp-analyser"
     ZSH
   end

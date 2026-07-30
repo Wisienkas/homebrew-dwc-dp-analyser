@@ -1,8 +1,8 @@
 class DwcDpAnalyser < Formula
   desc "Validator/analyser CLI for DwC-DP data packages"
   homepage "https://github.com/gbif/dwc-dp-analyser"
-  url "https://github.com/gbif/dwc-dp-analyser/releases/download/dwc-dp-analyser-0.0.8/dwc-dp-analyser-0.0.8.jar"
-  sha256 "28f721dc376d36f9078fe674c264212dd6c90ac62928df6a10c10892a9d327ce"
+  url "https://github.com/gbif/dwc-dp-analyser/releases/download/dwc-dp-analyser-0.0.9/dwc-dp-analyser-0.0.9.jar"
+  sha256 "4df9e0f55246bd652cfebddd139a142dfd70d0b6b66e0d166c9fa5ffe7f205e6"
   license "Apache-2.0"
 
   # Adjust the openjdk version constraint here if the CLI needs a specific
@@ -10,7 +10,7 @@ class DwcDpAnalyser < Formula
   depends_on "openjdk"
 
   def install
-    libexec.install "dwc-dp-analyser-0.0.8.jar" => "dwc-dp-analyser-cli.jar"
+    libexec.install "dwc-dp-analyser-0.0.9.jar" => "dwc-dp-analyser-cli.jar"
     (bin/"dwc-dp-analyser").write <<~SCRIPT
       #!/bin/bash
       exec "#{formula_opt_bin("openjdk")}/java" --enable-native-access=ALL-UNNAMED -jar "#{libexec}/dwc-dp-analyser-cli.jar" "$@"

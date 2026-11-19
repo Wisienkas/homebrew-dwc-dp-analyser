@@ -48,11 +48,13 @@ dwc-dp-analyser /path/to/datapackage.json
 ```
 
 ```
-Usage: dwc-dp-analyser [-hV] [--quiet] [--verbose] [--duckdb-max-temp=<duckdbMaxTemp>]
-           [--duckdb-memory=<duckdbMemory>] [--duckdb-temp-dir=<duckdbTempDir>]
+Usage: app [-hV] [--offline-schemas] [--quiet] [--verbose]
+           [--duckdb-max-temp=<duckdbMaxTemp>] [--duckdb-memory=<duckdbMemory>]
+           [--duckdb-temp-dir=<duckdbTempDir>]
            [--duckdb-threads=<duckdbThreads>] [--duckdb-url=<duckdbUrl>]
            [--log-dir=<logDir>] [--output-format=<outputFormat>]
-           [--report=<reportMode>] <descriptorPath>
+           [--report=<reportMode>] [--schema-host=<host>[,<host>...]]...
+           <descriptorPath>
       <descriptorPath>     Path to datapackage.json
       --duckdb-max-temp=<duckdbMaxTemp>
                            DuckDB max temp size
@@ -66,11 +68,19 @@ Usage: dwc-dp-analyser [-hV] [--quiet] [--verbose] [--duckdb-max-temp=<duckdbMax
                            DuckDB JDBC URL
   -h, --help               Show this help message and exit.
       --log-dir=<logDir>   Directory for logs
+      --offline-schemas    Never fetch schemas over the network; only bundled
+                             DwC-DP profiles are validated.
       --output-format=<outputFormat>
                            Output format: TEXT or JSON
       --quiet              Only show errors
       --report=<reportMode>
                            Report sections: FULL, STATS, VERIFY
+      --schema-host=<host>[,<host>...]
+                           Extra host trusted for fetching DwC-DP profiles that
+                             aren't bundled (HTTPS only, repeatable or
+                             comma-separated). Added on top of the defaults: rs.
+                             tdwg.org, dwc-prerelease.rs.tdwg.org, specs.
+                             frictionlessdata.io.
   -V, --version            Print version information and exit.
       --verbose            Enable debug logging
 ```
